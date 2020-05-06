@@ -14,14 +14,18 @@ public class GatewayConfiguration {
 	public RouteLocator myRoutes(RouteLocatorBuilder builder) {
 	    return builder.routes()
 	    	.route(p -> p
-		    			.path("/login")
-		    	//		.filters(f -> f.addRequestHeader("Content-Type", "application/json"))
-		    			.uri("http://localhost:8081/hello"))	
-	    /*	.route(p -> p
-	    			.path("/login")
-	    	//		.filters(f -> f.addRequestHeader("Content-Type", "application/json"))
-	    			.uri("http://localhost:8081/authenticate")) */
-	        .route(p -> p
+		    			.path("/authenticate")
+		    //			.filters(f -> f.addRequestHeader("Content-Type", "application/json"))
+		    			.uri("http://localhost:8081"))
+	    	.route(p -> p
+	    			.path("/")
+	    //			.filters(f -> f.addRequestHeader("Content-Type", "application/json"))
+	    			.uri("http://localhost:8081"))
+	     	.route(p -> p
+	    			.path("/hello")
+	    //			.filters(f -> f.addRequestHeader("Content-Type", "application/json"))
+	    			.uri("http://localhost:8081"))	
+	         .route(p -> p
 	            .path("/get")
 	            .filters(f -> f.addRequestHeader("Hello", "World"))
 	            .uri("http://httpbin.org:80"))
