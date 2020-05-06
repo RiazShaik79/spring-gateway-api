@@ -16,8 +16,8 @@ public class GatewayConfiguration {
 	    		
 	    	.route(p -> p
 	    			.path("/login")
-	    			.filters(f -> f.addRequestHeader("Content-Type", "application/json"))
-	    			.uri("http://user-auth-service/authenticate"))
+	    	//		.filters(f -> f.addRequestHeader("Content-Type", "application/json"))
+	    			.uri("http://localhost:8081/authenticate"))
 	        .route(p -> p
 	            .path("/get")
 	            .filters(f -> f.addRequestHeader("Hello", "World"))
