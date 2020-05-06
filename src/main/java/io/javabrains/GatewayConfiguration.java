@@ -13,6 +13,11 @@ public class GatewayConfiguration {
 	@Bean
 	public RouteLocator myRoutes(RouteLocatorBuilder builder) {
 	    return builder.routes()
+	    		
+	    	.route(p -> p
+	    			.path("/login")
+	    			.filters(f -> f.addRequestHeader("Content-Type", "application/json"))
+	    			.uri("http://user-auth-service/authenticate"))
 	        .route(p -> p
 	            .path("/get")
 	            .filters(f -> f.addRequestHeader("Hello", "World"))
