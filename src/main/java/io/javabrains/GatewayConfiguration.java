@@ -15,16 +15,14 @@ public class GatewayConfiguration {
 	    return builder.routes()
 	    	.route(p -> p
 		    			.path("/authenticate")
-		    //			.filters(f -> f.addRequestHeader("Content-Type", "application/json"))
-		    			.uri("http://localhost:8081"))
+		    			.filters(f -> f.hystrix(config -> config.setName("user-regis-service")))
+		    			.uri("lb://user-regis-service"))
 	    	.route(p -> p
 	    			.path("/")
-	    //			.filters(f -> f.addRequestHeader("Content-Type", "application/json"))
-	    			.uri("http://localhost:8081"))
+	       			.uri("lb://user-regis-service"))
 	     	.route(p -> p
 	    			.path("/hello")
-	    //			.filters(f -> f.addRequestHeader("Content-Type", "application/json"))
-	    			.uri("http://localhost:8081"))	
+	       			.uri("lb://user-regis-service"))	
 	         .route(p -> p
 	            .path("/get")
 	            .filters(f -> f.addRequestHeader("Hello", "World"))
