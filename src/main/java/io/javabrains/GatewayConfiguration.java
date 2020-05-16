@@ -16,11 +16,32 @@ public class GatewayConfiguration {
 	public RouteLocator myRoutes(RouteLocatorBuilder builder) {
 	    return builder.routes()
 	    	.route(p -> p
-		    			.path("/authenticate")
+		    			.path("/login")
 		    			.filters(f -> f.hystrix(config -> config.setName("user-regis-service")))
 		    			.uri("lb://user-regis-service"))
 	    	.route(p -> p
 	    			.path("/")
+	       			.uri("lb://user-regis-service"))
+	    	.route(p -> p
+	    			.path("/users/all")
+	       			.uri("lb://user-regis-service"))
+	    	.route(p -> p
+	    			.path("/user/{Id}")
+	       			.uri("lb://user-regis-service"))
+	    	.route(p -> p
+	    			.path("/user/add")
+	       			.uri("lb://user-regis-service"))
+	    	.route(p -> p
+	    			.path("/user/update/{Id}")
+	       			.uri("lb://user-regis-service"))
+	    	.route(p -> p
+	    			.path("/user/delete/{Id}")
+	       			.uri("lb://user-regis-service"))
+	    	.route(p -> p
+	    			.path("/user/forgotpassword/{Id}")
+	       			.uri("lb://user-regis-service"))
+	    	.route(p -> p
+	    			.path("/user/verifyOTP/{Id}")
 	       			.uri("lb://user-regis-service"))
 	     	.route(p -> p
 	    			.path("/hello")
