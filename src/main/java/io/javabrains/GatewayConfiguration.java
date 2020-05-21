@@ -1,11 +1,29 @@
 package io.javabrains;
 
+import java.security.NoSuchAlgorithmException;
+
+import javax.net.ssl.SSLContext;
+
+import org.apache.http.conn.ssl.TrustSelfSignedStrategy;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClients;
+import org.apache.http.ssl.SSLContexts;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.config.client.ConfigClientProperties;
+import org.springframework.cloud.config.client.ConfigServicePropertySourceLocator;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.cloud.gateway.route.RouteLocator;
 import org.springframework.cloud.gateway.route.builder.RouteLocatorBuilder;
 import org.springframework.cloud.netflix.hystrix.EnableHystrix;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
+import org.springframework.web.client.RestTemplate;
+
+import com.netflix.discovery.DiscoveryClient;
+import com.netflix.discovery.shared.transport.jersey.EurekaJerseyClientImpl.EurekaJerseyClientBuilder;
 
 @EnableHystrix
 @Configuration
@@ -17,8 +35,10 @@ public class GatewayConfiguration {
 	    return builder.routes()
 	    	.route(p -> p
 		    			.path("/login")
-		    			.filters(f -> f.hystrix(config -> config.setName("user-regis-service")))
+		    //			.filters(f -> f.hystrix(config -> config.setName("user-regis-service")))
+		    //			.uri("https://user-regis-service"))
 		    			.uri("lb://user-regis-service"))
+		    //			.uri("https://localhost:8444"))
 	    	.route(p -> p
 	    			.path("/")
 	       			.uri("lb://user-regis-service"))
@@ -56,4 +76,6 @@ public class GatewayConfiguration {
 	            .uri("http://httpbin.org:80")).
 	        build();
 	}
+	
+   
 }
