@@ -24,7 +24,7 @@ eureka:
     serviceUrl:
 #      defaultZone: http://localhost:8761/eureka/
 #for deploying the applcation on tomcat, below is the url for eureka server
-       defaultZone: http://localhost:8080/spring-discovery-service-war/eureka
+       defaultZone: http://18.237.0.237:8080/spring-discovery-server/eureka
 #spring:
 #  cloud:
 #    gateway:
