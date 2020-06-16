@@ -29,7 +29,8 @@ import com.netflix.discovery.shared.transport.jersey.EurekaJerseyClientImpl.Eure
 @EnableHystrix
 @Configuration
 @RefreshScope
-public class GatewayConfiguration extends SpringBootServletInitializer {
+public class GatewayConfiguration {
+//extends SpringBootServletInitializer {
 
 	@Bean
 	public RouteLocator myRoutes(RouteLocatorBuilder builder) {
