@@ -34,7 +34,7 @@ public class GatewayConfiguration {
 	public RouteLocator myRoutes(RouteLocatorBuilder builder) {
 	    return builder.routes()
 	    	.route(p -> p
-		    			.path("/login")
+		    			.path("/spring-security-jwt-jpa-user-regis-rest-microservice-api/userlogin")
 		    //			.filters(f -> f.hystrix(config -> config.setName("user-regis-service")))
 		    //			.uri("https://user-regis-service"))
 		    			.uri("lb://user-regis-service"))
@@ -44,28 +44,28 @@ public class GatewayConfiguration {
 	       			.uri("lb://user-regis-service"))
 	    	.route(p -> p
 	    			.path("/users/all")
-	       			.uri("lb://user-regis-service"))
+	       			.uri("lb://user-regis-service/spring-security-jwt-jpa-user-regis-rest-microservice-api"))
 	    	.route(p -> p
 	    			.path("/user/{Id}")
-	       			.uri("lb://user-regis-service"))
+	       			.uri("lb://user-regis-service/spring-security-jwt-jpa-user-regis-rest-microservice-api"))
 	    	.route(p -> p
 	    			.path("/user/add")
-	       			.uri("lb://user-regis-service"))
+	       			.uri("lb://user-regis-service/spring-security-jwt-jpa-user-regis-rest-microservice-api"))
 	    	.route(p -> p
 	    			.path("/user/update/{Id}")
-	       			.uri("lb://user-regis-service"))
+	       			.uri("lb://user-regis-service/spring-security-jwt-jpa-user-regis-rest-microservice-api"))
 	    	.route(p -> p
 	    			.path("/user/delete/{Id}")
-	       			.uri("lb://user-regis-service"))
+	       			.uri("lb://user-regis-service/spring-security-jwt-jpa-user-regis-rest-microservice-api"))
 	    	.route(p -> p
 	    			.path("/user/forgotpassword/{Id}")
-	       			.uri("lb://user-regis-service"))
+	       			.uri("lb://user-regis-service/spring-security-jwt-jpa-user-regis-rest-microservice-api"))
 	    	.route(p -> p
 	    			.path("/user/verifyOTP/{Id}")
-	       			.uri("lb://user-regis-service"))
+	       			.uri("lb://user-regis-service/spring-security-jwt-jpa-user-regis-rest-microservice-api"))
 	     	.route(p -> p
 	    			.path("/hello")
-	       			.uri("lb://user-regis-service"))	
+	       			.uri("lb://user-regis-service/spring-security-jwt-jpa-user-regis-rest-microservice-api"))	
 	         .route(p -> p
 	            .path("/get")
 	            .filters(f -> f.addRequestHeader("Hello", "World"))

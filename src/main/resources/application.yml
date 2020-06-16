@@ -1,31 +1,33 @@
-server:
-   port: 8443
-   ssl:
-      enabled: true
+#server:
+#   port: 8443
+#   ssl:
+#      enabled: true
 #     client-auth: need
-      key-store: classpath:api-gateway-cert.jks
-      key-store-password: India330$$
-      keyStoreType: JKS
-      keyStoreProvider: SUN
-      keyAlias: api-gateway-cert
-      trust-store: classpath:api-gateway-cert.jks
-      trust-store-password: India330$$
-      trust-store-type: JKS
+#      key-store: classpath:api-gateway-cert.jks
+#      key-store-password: India330$$
+#      keyStoreType: JKS
+#      keyStoreProvider: SUN
+#      keyAlias: api-gateway-cert
+#      trust-store: classpath:api-gateway-cert.jks
+#      trust-store-password: India330$$
+#      trust-store-type: JKS
 eureka:
-  instance:
-    nonSecurePortEnabled: false
-    securePortEnabled: true
-    securePort: ${server.port}
-    statusPageUrl: https://localhost:${server.port}/info
-    healthCheckUrl: https://localhost:${server.port}/health
-    homePageUrl: https://localhost:${server.port}
+#  instance:
+#    nonSecurePortEnabled: false
+#    securePortEnabled: true
+#    securePort: ${server.port}
+#    statusPageUrl: http://localhost:${server.port}/info
+#    healthCheckUrl: http://localhost:${server.port}/health
+#    homePageUrl: http://localhost:${server.port}
   client:
-    securePortEnabled: true
+#    securePortEnabled: true
     serviceUrl:
-      defaultZone: https://localhost:8761/eureka/
-spring:
-  cloud:
-    gateway:
-      httpclient:
-        ssl:
-          useInsecureTrustManager: true
+#      defaultZone: http://localhost:8761/eureka/
+#for deploying the applcation on tomcat, below is the url for eureka server
+       defaultZone: http://localhost:8080/spring-discovery-service-war/eureka
+#spring:
+#  cloud:
+#    gateway:
+#      httpclient:
+#        ssl:
+#          useInsecureTrustManager: true
