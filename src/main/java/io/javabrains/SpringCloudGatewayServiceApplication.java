@@ -40,14 +40,14 @@ public class SpringCloudGatewayServiceApplication  {
 		    return args;
 		} */
 	 
-	/*	protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
+		protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
 			return builder.sources(SpringCloudGatewayServiceApplication.class); 
 		} 
 		
 		@Bean
 		public ServerCodecConfigurer serverCodecConfigurer() {
 		   return ServerCodecConfigurer.create();
-		}  */
+		}  
 	
 	   @Bean
 	   public Sampler defaultSampler() {

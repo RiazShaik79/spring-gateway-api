@@ -9,6 +9,7 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.ssl.SSLContexts;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.cloud.config.client.ConfigClientProperties;
 import org.springframework.cloud.config.client.ConfigServicePropertySourceLocator;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
@@ -28,7 +29,7 @@ import com.netflix.discovery.shared.transport.jersey.EurekaJerseyClientImpl.Eure
 @EnableHystrix
 @Configuration
 @RefreshScope
-public class GatewayConfiguration {
+public class GatewayConfiguration extends SpringBootServletInitializer {
 
 	@Bean
 	public RouteLocator myRoutes(RouteLocatorBuilder builder) {
